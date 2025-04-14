@@ -59,6 +59,10 @@ if __name__ == "__main__":
         list_nan = cek_nan(df)
         df = cleaning_nan(df, list_na=list_nan)
         print(f"Cleaning NAN Succesfully: {df.shape[0]} baris, {df.shape[1]} kolom")
+        # cleaning relevan job
+        keywords = ['data', 'scientist', 'machine learning', 'big data', 'modeling', 'analytst', "analis"]
+        df = filter_relevan_job(df,list_keyword=keywords)
+        print(f"\nSuccessfully filter ({df.shape[0]}) data to relevan job")
 
         # Storing to Google Big Query______________________________ 6
         if not df.empty:

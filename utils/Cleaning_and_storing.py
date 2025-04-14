@@ -67,8 +67,28 @@ def cleaning_nan(df:pd.DataFrame, list_na:list) -> pd.DataFrame:
             
         elif val == "company_industry":
             df["company_industry"] = df["company_industry"].fillna("Unspecified")
+        
 
     cek_nan(df)
+    return df
+
+
+def filter_relevan_job(df:pd.DataFrame, list_keyword:list) -> pd.DataFrame:
+    """Filters the jobs in the given DataFrame based on the presence of specified keywords 
+    in the 'job_name' column. Only the rows where 'job_name' contains one or more of 
+    the keywords (case-insensitive) will be retained.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to be cleaned.
+        list_keyword (list): A list of keywords that should be searched within the 'job_name' column.
+
+    Returns:
+        pd.DataFrame: A filtered DataFrame containing only the job listings that include at least one 
+                    of the provided keywords in the 'job_name' column.
+    """
+    keywords = list_keyword
+    df = df[df['job_name'].str.contains('|'.join(keywords), case=False, na=False)]
+    
     return df
 
 # _________________________________________________________________________________________ Storing
