@@ -30,7 +30,7 @@ def glints_login(browser, email_glints, password_glints) -> bool:
     try:
         print("\nOpening browser...")
         
-        with tqdm(total=total_steps, desc="Login Process",colour="green", ncols=200, unit="step") as pbar:
+        with tqdm(total=total_steps, desc="Login Process",colour="green", ncols=100, unit="step") as pbar:
 
             browser.get("https://glints.com/id/login")
             pbar.update(1) # open link   1
@@ -171,7 +171,7 @@ def collect_job_links(browser:webdriver, job_title:str, limit:int=None) -> list:
 
         print(f"Discovered {last_page_num} pages of job listings, capping the process at {max_page_num} pages.")
 
-        for page_num in tqdm(range(2, max_page_num+1), desc=f"Collecting {max_page_num-1} remaining pages", colour='green', ncols=200, unit="page"):
+        for page_num in tqdm(range(2, max_page_num+1), desc=f"Collecting {max_page_num-1} remaining pages", colour='green', ncols=100, unit="page"):
             page = request_page(job_title, page_num, browser)
             if page:
                 page_links = get_job_link_page(page)
@@ -291,7 +291,7 @@ def extract_all_job_details(links:list, browser:webdriver, split:int=60) -> list
     """
     #--------------------------- - 1. Atur pembagian running
     if split > len(links):
-        print(f"Split value {split} is greater than the number of links {len(links)}")
+        print(f"Split value {split} is greater than the number of job links {len(links)}")
         # return []
         
 
@@ -303,7 +303,7 @@ def extract_all_job_details(links:list, browser:webdriver, split:int=60) -> list
     for i, list_link in enumerate(splited_links,start=1):
 
         time.sleep(randint(3, 8))  # Random delay to avoid rate limiting
-        for link in tqdm(list_link, desc=f"(Batch {i}) Fetching full job details" ,ncols=200, unit="step"):
+        for link in tqdm(list_link, desc=f"(Batch {i}) Fetching full job details" ,ncols=100, unit="step"):
             job_details = extract_job_details(link, browser)
             if job_details:
                 jobs.append(job_details)
