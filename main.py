@@ -49,8 +49,8 @@ if __name__ == "__main__":
         df = pd.DataFrame(result)
 
         # save to csv_______________________________________________ 4
-        df.to_csv(f"data/Glints_RAW.csv", index=False)
-        print(f"\nSuccessfully saved to CSV file, name: Glints_RAW.csv")
+        # df.to_csv(f"data/Glints_RAW.csv", index=False)
+        # print(f"\nSuccessfully saved to CSV file, name: Glints_RAW.csv")
 
         # cleaning__________________________________________________ 5
         df = pd.read_csv("data/Glints_RAW.csv", parse_dates=['post_time', 'obtained'])
