@@ -63,10 +63,10 @@ Make sure you put the Google Cloud service account JSON file into the `privacy/`
 │   ├── Cleaning_and_storing.py         # Functions to clean and store data
 │   └── Scraping.py                     # Functions to scrape job data
 ├── data/                               # Folder for storing raw and 
+│                                         processed data (e.g., CSV files)
 ├── report/
 │   ├── looker_link.txt                 # Looker Studio Dashboard
 │   └── pptx file                       # Power Point Presentation file
-processed data (e.g., CSV files)
 ├── main.py                             # Main execution script
 ├── requirements.txt                    # All requirements libraries
 └── README.md                           # This readme
